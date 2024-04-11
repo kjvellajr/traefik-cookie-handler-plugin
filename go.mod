@@ -1,3 +1,3 @@
-module github.com/vaspapadopoulos/traefik-cookie-handler-plugin
+module github.com/kjvellajr/traefik-cookie-handler-plugin
 
-go 1.17
+go 1.21

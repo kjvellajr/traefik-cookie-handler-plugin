@@ -2,7 +2,7 @@
 displayName: Cookie Handler Plugin
 type: middleware
 
-import: github.com/vaspapadopoulos/traefik-cookie-handler-plugin
+import: github.com/kjvellajr/traefik-cookie-handler-plugin
 
 summary: >
   Performs an HTTP/HTTPS request to a specified (URL, HTTP Method) and
@@ -14,6 +14,7 @@ summary: >
 testData:
   url: "https://a-domain.com/a-path"
   method: "POST"
+  body: "urn:k8s:secret:default:auth-data:request_payload"
   responseCookies:
     - "COOKIE-A"
     - "COOKIE-B"

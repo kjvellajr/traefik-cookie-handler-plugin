@@ -13,6 +13,7 @@ middleware or Traefik service.
 testData:
   url: https://a-domain.com/a-path
   method: POST
+  body: urn:k8s:secret:default:auth-data:request_payload
   responseCookies:
     - COOKIE-A
     - COOKIE-B
@@ -71,7 +72,7 @@ pilot:
 experimental:
   plugins:
     cookie-handler:
-      moduleName: github.com/vaspapadopoulos/traefik-cookie-handler-plugin
+      moduleName: github.com/kjvellajr/traefik-cookie-handler-plugin
       version: v0.1.0
 ```
 

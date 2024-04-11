@@ -4,14 +4,16 @@ import (
 	"context"
 	"net/http"
 	"net/http/httptest"
+	"strings"
 	"testing"
 
-	cookieHandler "github.com/vaspapadopoulos/traefik-cookie-handler-plugin"
+	cookieHandler "github.com/kjvellajr/traefik-cookie-handler-plugin"
 )
 
 func TestCookieHandler(t *testing.T) {
 	cfg := cookieHandler.CreateConfig()
 	cfg.Url = "https://my-api.my-domain.com"
+	cfg.Body = "{\"username\":\"foo\",\"password\",\"bar\"}"
 	cfg.Method = http.MethodGet
 	cfg.ResponseCookies = []string{"JWT-SESSION", "XSRF-TOKEN"}
 
@@ -25,7 +27,7 @@ func TestCookieHandler(t *testing.T) {
 
 	recorder := httptest.NewRecorder()
 
-	req, err := http.NewRequestWithContext(ctx, cfg.Method, cfg.Url, nil)
+	req, err := http.NewRequestWithContext(ctx, cfg.Method, cfg.Url, strings.NewReader(cfg.Body))
 	if err != nil {
 		t.Fatal(err)
 	}
